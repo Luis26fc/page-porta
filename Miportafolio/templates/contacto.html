@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4 shadow">
+            <h2 class="text-center mb-4">¡Escríbeme!</h2>
+            <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Tu Nombre</label>
+                    <input type="text" name="nombre" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tu Correo Electrónico</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mensaje</label>
+                    <textarea name="mensaje" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

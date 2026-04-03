@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bienvenido, Admin</h2>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-4 border-primary">
+            <h4>Añadir Nuevo Proyecto</h4>
+            <form action="/admin/nuevo_proyecto" method="POST">
+                <input type="text" name="titulo" placeholder="Título" class="form-control mb-2" required>
+                <select name="categoria" class="form-control mb-2">
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Data Analysis">Data Analysis</option>
+                </select>
+                <textarea name="descripcion" placeholder="Descripción corta" class="form-control mb-2" required></textarea>
+                <input type="url" name="link" placeholder="Link de GitHub" class="form-control mb-2" required>
+                <button class="btn btn-primary w-100">Publicar Proyecto</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+       <h4>Proyectos Actuales</h4>
+<ul class="list-group">
+    {% for p in proyectos %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{ p.titulo }}</strong> <br>
+            <small class="text-muted">{{ p.categoria }}</small>
+        </div>
+        <a href="{{ url_for('borrar_proyecto', id=p.id) }}"
+           class="btn btn-danger btn-sm"
+           onclick="return confirm('¿Estás seguro de que quieres eliminar este proyecto?')">
+           Borrar
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+    </div>
+</div>
+{% endblock %}
